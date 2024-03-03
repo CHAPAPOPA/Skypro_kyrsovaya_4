@@ -2,7 +2,7 @@ class Vacancy:
     """Класс для работы с вакансиями"""
     profession: str
     requirement: str
-    link: str
+    address: str
     currency: str
     job_finder_name: str
     job_finder_link: str
@@ -10,12 +10,12 @@ class Vacancy:
     payment_from: int
     payment_to: int
 
-    def __init__(self, profession, requirement, link, currency, job_finder_name,
+    def __init__(self, profession, requirement, address, currency, job_finder_name,
                  job_finder_link, vacancy_link, payment_from, payment_to):
 
         self.profession = profession
         self.requirement = requirement
-        self.link = link
+        self.address = address
         self.currency = currency
         self.job_finder_name = job_finder_name
         self.job_finder_link = job_finder_link
