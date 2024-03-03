@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "skypro-kyrsovaya-4"
+version = "0.1.0"
+description = ""
+authors = ["Yackov Muliavin <yackow.muliawin2015@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^8.0.2"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
