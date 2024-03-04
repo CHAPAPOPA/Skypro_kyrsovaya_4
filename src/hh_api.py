@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 import requests
 from src.vacancy import Vacancy
-from src.save_vacancies import SaveVacancies
 
 
 class Hh(ABC):
@@ -71,31 +70,3 @@ class Hh_vacancies(Hh):
             except Exception as e:
                 print("Ошибка при обработке вакансии:", e)
         return vacancies_list
-
-    # @staticmethod
-    # def save_to_json(vacancies_data: list, filename: str, folder: str = "data"):
-    #     """Сохраняет данные о вакансиях в формате JSON в указанном файле в указанной папке"""
-    #     parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    #     folder_path = os.path.join(parent_dir, folder)
-    #     print("Folder path:", folder_path)
-    #     try:
-    #         if not os.path.exists(folder_path):
-    #             print("Creating folder...")
-    #             os.makedirs(folder_path)
-    #         filepath = os.path.join(folder_path, filename if filename.endswith('.json') else filename + '.json')
-    #         with open(filepath, 'w', encoding='utf-8') as f:
-    #             json.dump(vacancies_data, f, ensure_ascii=False, indent=4)
-    #         print("Файл успешно создан:", filepath)
-    #     except Exception as e:
-    #         print("Ошибка при сохранении в файл:", e)
-
-
-if __name__ == '__main__':
-    vacancies = Hh_vacancies().get_vacancies('Python junior')
-    save_vacancies = SaveVacancies(filename='vacancies_data')
-    save_vacancies.add_vacancy(vacancies)
-    # print(Hh_vacancies().get_vacancies('Python'))
-    # y = Hh_vacancies()
-    # yy = y.get_vacancies("Python junior")
-    # print(yy)
-    # y.save_to_json(yy, 'Python_jun')

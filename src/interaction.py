@@ -1,5 +1,5 @@
-from hh_api import Hh_vacancies
-from save_vacancies import SaveVacancies
+from src.hh_api import Hh_vacancies
+from src.save_vacancies import SaveVacancies
 
 
 def search_by_keyword(vacancies, keyword):
@@ -12,7 +12,9 @@ def display_vacancies(vacancies):
         print("Вакансии не найдены.")
         return
     for i, vacancy in enumerate(vacancies, 1):
-        print(f"{i}. {vacancy.profession}: {vacancy.payment_from}-{vacancy.payment_to} {vacancy.currency} - {vacancy.vacancy_link}")
+        print(
+            f"{i}. {vacancy.profession}: {vacancy.payment_from}-{vacancy.payment_to} {vacancy.currency} - "
+            f" {vacancy.vacancy_link}")
 
 
 def interact_with_user():
@@ -55,7 +57,8 @@ def interact_with_user():
             top_n_input = input("Введите количество вакансий для вывода: ")
             if top_n_input.isdigit():
                 top_n = int(top_n_input)
-                top_vacancies = sorted(all_vacancies, key=lambda x: (x.payment_from + x.payment_to) / 2, reverse=True)[:top_n]
+                top_vacancies = sorted(all_vacancies, key=lambda x: (x.payment_from + x.payment_to) / 2, reverse=True)[
+                                :top_n]
                 display_vacancies(top_vacancies)
                 save_choice = input("Хотите ли вы сохранить данные в JSON файл? (да/нет): ")
                 if save_choice.lower() == "да":
@@ -93,7 +96,3 @@ def interact_with_user():
                 print("Данные успешно сохранены в JSON файл.")
             else:
                 print("Данные не были сохранены.")
-
-
-# if __name__ == "__main__":
-#     interact_with_user()
