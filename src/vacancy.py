@@ -12,7 +12,6 @@ class Vacancy:
 
     def __init__(self, profession, requirement, address, currency, job_finder_name,
                  job_finder_link, vacancy_link, payment_from, payment_to):
-
         self.profession = profession
         self.requirement = requirement
         self.address = address
@@ -22,25 +21,25 @@ class Vacancy:
         self.vacancy_link = vacancy_link
         self.payment_from = payment_from
         self.payment_to = payment_to
-        self.average_payment = 0
+        self.average_payment = self.calculate_average_payment()
         self.verification()
-        self.change_average_payment()
 
-    def change_average_payment(self):
+    def calculate_average_payment(self):
         """Метод, который при отсутствии зп, считает среднюю"""
-        if self.payment_from == 0:
-            self.average_payment = "По договоренности"
-        elif self.payment_to == 0:
-            self.average_payment = self.payment_from
+        if self.payment_from is None:
+            return "По договоренности"
+        elif self.payment_to is None:
+            return self.payment_from
         else:
-            self.average_payment = (int(self.payment_to) + int(self.payment_from)) / 2
+            return (self.payment_to + self.payment_from) / 2
 
     def verification(self):
         for k, v in self.__dict__.items():
             if v is None:
                 raise ValueError(f"Не указана информация по вакансии: {k}")
 
-            return True
+    def __repr__(self):
+        return f"Vacancy(profession='{self.profession}', average_payment={self.average_payment})"
 
     def __gt__(self, other):
         return self.average_payment > other.average_payment
